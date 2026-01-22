@@ -7,6 +7,14 @@ title: Proposal
 
 Our project aims to build a wolf detector in Minecraft. The goal is to automatically identify the location of all wolves in a given game frame with a bounding box in real time (actual gameplay). The input to our system will be visual data captured from an automated data generation harness in Minecraft, which automatically generates screenshots of wolves and the corresponding 2D bounding box coordinates. The output will be a list of axis-aligned bounding boxes indicating the location of wolves in the frame. In practice, the model should be able help players detect wolves in realtime gameplay.
 
+## Project Goals
+
+Minimum goal: Detects bounding boxes around 60% of wolves on average
+
+Realistic goal: Detects bounding boxes around 90% of wolves on average, with less than 5% of bounding boxes being false positives
+
+Moonshot goal: Detects bounding boxes around 100% of wolves with zero false positives
+
 ## AI/ML Algorithms 
 
 We will be using supervised machine learning for image object detection, namely convolutional neural networks (CNNs).
