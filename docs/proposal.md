@@ -5,29 +5,12 @@ title: Proposal
 
 ## Summary of the Project 
 
-> In a paragraph or so, describe the main idea behind your project. Focus on the problem setup, not the
-> solution, i.e. what is your goal? At the very least, you should have a sentence that clearly explains
-> the input/output semantics of your project, i.e. what information will it take as input, and what will it
-> produce. Mention any applications, if any, for your project.
+Our project aims to build a wolf detector in Minecraft. The goal is to automatically identify the location of all wolves in a given game frame with a bounding box in real time (actual gameplay). The input to our system will be visual data captured from an automated data generation harness in Minecraft, which automatically generates screenshots of wolves and the corresponding 2D bounding box coordinates. The output will be a list of axis-aligned bounding boxes indicating the location of wolves in the frame. In practice, the model should be able help players detect wolves in realtime gameplay.
 
 ## AI/ML Algorithms 
 
-> In a single sentence, name the AI/ML algorithm(s) and method(s) you anticipate using for your project.
-> It does not have to be a detailed description of any algorithm, even just the name of a class of methods
-> is sufficient. Examples of this include “planning with dynamic programming”, “reinforcement learning
-> with neural function approximator”, “learning from demonstrations”, “min-max tree search with
-> pruning”, and so on. You can take a guess at properties of the method that you’ll prefer using, such as
-> model-free vs. model-based, on-policy vs. off-policy, etc. You won’t lose points for suggesting an
-> incorrect algorithm or method, and you’ll be able to switch to different ones at any point that it makes
-> sense later in the project
+We will be using supervised machine learning for image object detection, namely convolutional neural networks (CNNs).
 
 ## Evaluation Plan
-> As described in class, mention how you will evaluate the success of your project. In a paragraph, focus
-> on the quantitative evaluation: what are the metrics, what are the baselines, how much you expect your
-> approach to improve the metric by (just a ballpark is enough), what data will you evaluate on, etc. In
-> another paragraph, describe what qualitative analysis you will show to verify the project works, such as
-> what are the toy examples and sanity cases for the approach, how will you visualize the internals of the
-> algorithm to verify it works, what’s your moonshot case, i.e. it’ll be awesome and impressive if you get
-> there. Note that these are not promises, we’re not going to hold you to what you say here, but we want
-> you to think about the evaluation of your project in a critical manner, as you design your project and set
-> about performing it.
+
+To evaluate our project quantitatively, we will measure standard classification and detection metrics such as accuracy, precision, recall, and F1 score on a validation set of Minecraft images, separate from the training set. As a baseline, we will compare against a naive, purely algorithmic classifier that draws bounding boxes around all vaguely white objects. We expect our model to significantly outperform this baseline, ideally achieving high precision and recall in varied environments (e.g., different biomes, lighting conditions, and distances). Qualitatively, we will visualize detection results directly in Minecraft screenshots to verify correct behavior, test edge cases such as partially occluded wolves or visually similar mobs. We will also be testing bounding boxes  Our “moonshot” scenario is running the game at 60 fps and capturing wolves accurately.
