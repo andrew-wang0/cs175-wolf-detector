@@ -148,6 +148,19 @@ apparent on the snow environment as shown below.
 From this version, we were able to guess most of the remaining challenges in the project: things such as camera framing,
 floor appearance, or the lack of similar mobs.
 
+<figure style="text-align: center; margin: 1.25rem 0;">
+  <img src="./img/v1_graphs.png" width="100%" alt="Training curves and validation metrics for the preliminary YOLO model" style="display: block; margin: 0 auto;">
+  <figcaption style="color: #222; margin-top: 0.5rem;">Training and validation curves for the preliminary YOLO model, including losses, precision, recall, and mAP.</figcaption>
+</figure>
+
+
+<figure style="text-align: center; margin: 1.25rem 0;">
+  <img src="./img/v1_overworld.png" width="100%" alt="Side-by-side expected labels and model predictions in an overworld snow scene" style="display: block; margin: 0 auto;">
+  <figcaption style="color: #222; margin-top: 0.5rem;">Preliminary model failure in an overworld snow scene: expected wolf locations on the left, low-confidence and incorrect predictions on the right.</figcaption>
+</figure>
+
+<br/>
+
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
   <div><strong>Training Set Size:</strong> <code>{20}</code> images</div>
   <div><strong>Precision:</strong> <code>{85.60%}</code></div>
@@ -166,17 +179,6 @@ floor appearance, or the lack of similar mobs.
 </div>
 
 <br/>
-
-<figure style="text-align: center; margin: 1.25rem 0;">
-  <img src="./img/v1_graphs.png" width="100%" alt="Training curves and validation metrics for the preliminary YOLO model" style="display: block; margin: 0 auto;">
-  <figcaption style="color: #222; margin-top: 0.5rem;">Training and validation curves for the preliminary YOLO model, including losses, precision, recall, and mAP.</figcaption>
-</figure>
-
-
-<figure style="text-align: center; margin: 1.25rem 0;">
-  <img src="./img/v1_overworld.png" width="100%" alt="Side-by-side expected labels and model predictions in an overworld snow scene" style="display: block; margin: 0 auto;">
-  <figcaption style="color: #222; margin-top: 0.5rem;">Preliminary model failure in an overworld snow scene: expected wolf locations on the left, low-confidence and incorrect predictions on the right.</figcaption>
-</figure>
 
 ## Iterating for Improvements
 
