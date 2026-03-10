@@ -5,54 +5,22 @@ title: Final Report
 
 # Final Video
 
+<video width="100%" controls>
+  <source src="./img/vid.mp4" type="video/mp4">
+</video>
+
+<div style="height: 220px; margin: 1.5rem 0; border: 2px dashed #bdbdbd; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #666; text-align: center; padding: 1rem;">
+  <strong>Leave space for live gameplay demo.</strong>
+</div>
+
 # Project Summary
 
-Our project aims to build a real-time wolf detection system for Minecraft that locates wolves in a live gameplay environment. The input to the system consists of image frames captured from Minecraft.
+Our project aims to build a real-time wolf detector for Minecraft that can run during gameplay. The input to the system is an image frame captured from Minecraft, and the output is a set of 2D bounding boxes with confidence scores indicating where wolves appear in the frame.
 
-The input are images are collected through a semi-automated data generation process that takes screenshots and associates each wolf with 2D bounding box coordinates in YOLO format through a custom made Minecraft mod.
+A large part of the engineering was put into getting a reliable data pipeline to train our models with. We wrote a NeoForged mod that spawns wolves, captures screenshots, and converts each wolf's in-game 3D hitbox into a YOLO-format 2D annotation. That let us generate training data directly from Minecraft instead of labeling images by hand.
 
-The output of the model is a set of axis-aligned bounding boxes (AABB), each corresponding to a detected wolf in the frame, along with a confidence score. Each bounding box specifies the predicted location of a wolf in image coordinates.
-
-In practice, running our trained model in a live environment will be able to detect wolves in gameplay frames, enabling live visual highlighting of wolves during gameplay.
-
-
+The biggest struggle we ran into was that good results were very dependent on the data quality and data diversity that we gave it. Our early models looked promising in a simple setup, but struggled in a more complex environment. We used a mostly fixed camera, a predictable floor, and no meaningful distractor mobs. In the final stage of the project, we made the task harder in three targeted ways. We changed camera angles, changed the floor across ~100 multicolored Minecraft block types, and added sheep to the scene so the detector had to ignore lookalike mobs.
 
 # Approach
 
-<img src="./img/pipeline.png" width="100%">
-
-## Minecraft Environment
-
-Talk about how we planned to produce data within Minecraft using screenshots of wolves
-
-## Data Generation
-
-Talk about the mod we made and how it automatically generates and labels screenshots
-
-## AI Model
-
-Talk about how we researched different models and how we landed on YOLO
-
-
-
-# Evaluation
-
-Evaluation is important and we went thorugh several iterations to get the best performance
-
-## Preliminary Model
-
-First approach and why it was a naive approach
-
-## Iterating for Improvements
-
-Failures and how we solved
-(include graphs and images to back up)
-
-## Final Model
-
-How fixing everything made it better
-Testing in live Minecraft results
-
-
-
-# Resources Used
+<img src="./img/pipeline.png" width="100%" alt="Pipeline for Minecraft data generation, training, and evaluation">
