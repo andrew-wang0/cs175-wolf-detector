@@ -43,7 +43,7 @@ environment it would later run in. This helped ensure the wolf detector would wo
 and situations.
 
 For the initial experiments, we used a simple superflat world and repeatedly generated scenes with wolves from a
-birds-eye view. This made it easier to build and test the data pipeline before expanding to more varied environments.
+bird's-eye view. This made it easier to build and test the data pipeline before expanding to more varied environments.
 
 ## Data Generation
 
@@ -55,10 +55,10 @@ Our data generation pipeline was built as a custom NeoForged mod. At runtime, th
 - Teleports the player around the center point so that the wolves are seen from different camera angles.
 - Replaces the floor with one of 78 differently colored Minecraft blocks.
 - Spawns sheep into the scene.
-- Captures a screenshot from the players viewpoint.
+- Captures a screenshot from the player's viewpoint.
 - Reads each wolf's 3D axis-aligned bounding box from the game engine.
 - Writes one YOLO annotation per visible wolf in the format `<class_id> <center_x> <center_y> <width> <height>`.
-- Clear and reset the scene with the steps above
+- Clears and resets the scene with the steps above
 
 ### Data Complexity
 
@@ -88,7 +88,7 @@ was added forced the detector to rely less on simple shortcuts and more on the a
 change exposed new weaknesses in earlier models and helped us guess what the detector was really learning from the data.
 
 We also considered generating training data in the Minecraft overworld so the model could learn from more natural
-terrain and occlusion. However, we didn't have a way to reliably vary the enviroment. In our superflat environment, we
+terrain and occlusion. However, we didn't have a way to reliably vary the environment. In our superflat environment, we
 were able to control the color and angle of our samples consistently. Because of this, we chose to keep training data
 generation in the controlled platform for now.
 
@@ -113,7 +113,7 @@ object detection framework.
 | Approach                              | Advantages                                                                       | Limitations                                                                    |
 |---------------------------------------|----------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
 | Custom CNN                            | Full control over architecture, useful for experimentation                       | Requires implementing detection logic and bounding box prediction from scratch |
-| [YOLO](https://docs.ultralytics.com/) | Fast inference, established object detection framework, simple training pipeline | Less architectural control compared to building a model from scratch</div>     |
+| [YOLO](https://docs.ultralytics.com/) | Fast inference, established object detection framework, simple training pipeline | Less architectural control compared to building a model from scratch |
 
 \
 Given the goal of real-time inference, we chose to use the YOLOv26 model with a
@@ -213,7 +213,7 @@ After experimenting with live-gameplay, we realized that the model struggled to 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
   <div style="flex: 1 1 100%;">
 We added camera-angle variation by teleporting the player so wolves appeared from different viewpoints in our dataset.
-While testing our model in different environemtns, we discovered that the model struggled in different biomes, especially when wolves appeared against white backgrounds, such as in the snow.
+However, we noted that the model struggled in different biomes, especially when wolves appeared against white backgrounds (such as in the snow).
 </div>
   <hr style="flex: 1 1 100%; border: 0; border-top: 1px solid #bdbdbd; margin: 2px 0 6px 0;" />
   <div><strong>Training Set Size:</strong> <code>{TBD}</code> images</div>
@@ -224,7 +224,7 @@ While testing our model in different environemtns, we discovered that the model 
 <div style="display: flex; flex-wrap: wrap; gap: 12px; margin: 1rem 0;">
   <div style="flex: 1 1 280px; background: #fdeaea; border: 1px solid #e9b4b4; border-radius: 8px; padding: 12px;">
     <div style="font-weight: 700; color: #9f1f1f; margin-bottom: 6px;">Downsides</div>
-    <div>The consistent background made the model perform poorly in different-colored environemtns.</div>
+    <div>The consistent background made the model perform poorly in different-colored environments.</div>
   </div>
   <div style="flex: 1 1 280px; background: #eaf8ea; border: 1px solid #b8ddb8; border-radius: 8px; padding: 12px;">
     <div style="font-weight: 700; color: #1f7a1f; margin-bottom: 6px;">Next Fix</div>
@@ -237,7 +237,10 @@ While testing our model in different environemtns, we discovered that the model 
 #### V4: Varying Backgrounds
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
-  <div style="flex: 1 1 100%;">We introduced background variation by replacing the floor with different colored block types.</div>
+  <div style="flex: 1 1 100%;">
+We introduced background variation by replacing the floor with different colored block types. 
+When we encountered sheep during in-game testing, we discovered that the detector falsely identified sheep as wolves, which were similar in appearance.
+</div>
   <hr style="flex: 1 1 100%; border: 0; border-top: 1px solid #bdbdbd; margin: 2px 0 6px 0;" />
   <div><strong>Training Set Size:</strong> <code>{TBD}</code> images</div>
   <div><strong>Precision:</strong> <code>{TBD}</code></div>
@@ -247,7 +250,7 @@ While testing our model in different environemtns, we discovered that the model 
 <div style="display: flex; flex-wrap: wrap; gap: 12px; margin: 1rem 0;">
   <div style="flex: 1 1 280px; background: #fdeaea; border: 1px solid #e9b4b4; border-radius: 8px; padding: 12px;">
     <div style="font-weight: 700; color: #9f1f1f; margin-bottom: 6px;">Downsides</div>
-    <div>The model could still confuse wolves with similar colored entities.</div>
+    <div>The model confused wolves with similar colored entities.</div>
   </div>
   <div style="flex: 1 1 280px; background: #eaf8ea; border: 1px solid #b8ddb8; border-radius: 8px; padding: 12px;">
     <div style="font-weight: 700; color: #1f7a1f; margin-bottom: 6px;">Next Fix</div>
@@ -260,7 +263,10 @@ While testing our model in different environemtns, we discovered that the model 
 #### V5: Add Negatives
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
-  <div style="flex: 1 1 100%;">We added sheep as distractors so the detector had to separate wolves from similar-looking mobs.</div>
+  <div style="flex: 1 1 100%;">
+We added sheep as distractors so the detector had to separate wolves from similar-looking mobs.
+The model had good performance, but still needed more total examples to stabilize.
+</div>
   <hr style="flex: 1 1 100%; border: 0; border-top: 1px solid #bdbdbd; margin: 2px 0 6px 0;" />
   <div><strong>Training Set Size:</strong> <code>{TBD}</code> images</div>
   <div><strong>Precision:</strong> <code>{TBD}</code></div>
@@ -291,7 +297,6 @@ correct visual features was the most challenging part of the project.
 <img src="./img/v5_label.jpg" width="100%">
 
 ## Final Model
-
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
   <div style="flex: 1 1 100%;">
