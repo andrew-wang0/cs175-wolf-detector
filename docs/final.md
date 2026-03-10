@@ -92,27 +92,10 @@ varied environments.
 For the detection model, we considered both training a custom convolutional neural network (CNN) and using an existing
 object detection framework.
 
-<table>
-  <thead>
-    <tr>
-      <th>Approach</th>
-      <th>Advantages</th>
-      <th>Limitations</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Custom CNN</td>
-      <td>Full control over architecture, useful for experimentation</td>
-      <td>Requires implementing detection logic and bounding box prediction from scratch</td>
-    </tr>
-    <tr>
-      <td><a href="https://docs.ultralytics.com/">YOLO</a></td>
-      <td>Fast inference, established object detection framework, simple training pipeline</td>
-      <td>Less architectural control compared to building a model from scratch</td>
-    </tr>
-  </tbody>
-</table>
+| <div style="padding: 8px;">Approach</div> | <div style="padding: 8px;">Advantages</div> | <div style="padding: 8px;">Limitations</div> |
+|-------------------------------------------|---------------------------------------------|----------------------------------------------|
+| <div style="padding: 8px;">Custom CNN</div> | <div style="padding: 8px;">Full control over architecture, useful for experimentation</div> | <div style="padding: 8px;">Requires implementing detection logic and bounding box prediction from scratch</div> |
+| <div style="padding: 8px;"><a href="https://docs.ultralytics.com/">YOLO</a></div> | <div style="padding: 8px;">Fast inference, established object detection framework, simple training pipeline</div> | <div style="padding: 8px;">Less architectural control compared to building a model from scratch</div> |
 
 Given the goal of real-time inference, we chose to use the YOLOv26 model with a
 custom dataset because it was the most performant and had the most flexibility for our needs.
