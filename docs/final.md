@@ -92,10 +92,27 @@ varied environments.
 For the detection model, we considered both training a custom convolutional neural network (CNN) and using an existing
 object detection framework.
 
-| Approach                              | Advantages                                                                       | Limitations                                                                    |
-|---------------------------------------|----------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
-| Custom CNN                            | Full control over architecture, useful for experimentation                       | Requires implementing detection logic and bounding box prediction from scratch |
-| [YOLO](https://docs.ultralytics.com/) | Fast inference, established object detection framework, simple training pipeline | Less architectural control compared to building a model from scratch           |
+<table>
+  <thead>
+    <tr>
+      <th>Approach</th>
+      <th>Advantages</th>
+      <th>Limitations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Custom CNN</td>
+      <td>Full control over architecture, useful for experimentation</td>
+      <td>Requires implementing detection logic and bounding box prediction from scratch</td>
+    </tr>
+    <tr>
+      <td><a href="https://docs.ultralytics.com/">YOLO</a></td>
+      <td>Fast inference, established object detection framework, simple training pipeline</td>
+      <td>Less architectural control compared to building a model from scratch</td>
+    </tr>
+  </tbody>
+</table>
 
 Given the goal of real-time inference, YOLO was the more practical choice.
 
