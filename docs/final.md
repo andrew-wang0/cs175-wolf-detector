@@ -206,11 +206,11 @@ epochs to account for the larger dataset size.
 <div style="display: flex; flex-wrap: wrap; gap: 12px; margin: 1rem 0;">
   <div style="flex: 1 1 280px; background: #fdeaea; border: 1px solid #e9b4b4; border-radius: 8px; padding: 12px;">
     <div style="font-weight: 700; color: #9f1f1f; margin-bottom: 6px;">Downsides</div>
-    <div>More data helped, but the camera viewpoint was still too consistent for strong generalization.</div>
+    <div>More data increased accuracy and reduced false-negatives, but the single camera viewpoint made it poor at generalization.</div>
   </div>
   <div style="flex: 1 1 280px; background: #eaf8ea; border: 1px solid #b8ddb8; border-radius: 8px; padding: 12px;">
     <div style="font-weight: 700; color: #1f7a1f; margin-bottom: 6px;">Next Fix</div>
-    <div>Add camera-angle variation so wolves are seen from multiple perspectives instead of mostly one top-down framing.</div>
+    <div>Add camera-angle variation so wolves are seen from multiple perspectives in our dataset instead of always top-down.</div>
   </div>
 </div>
 
@@ -232,11 +232,11 @@ different viewpoints.
 <div style="display: flex; flex-wrap: wrap; gap: 12px; margin: 1rem 0;">
   <div style="flex: 1 1 280px; background: #fdeaea; border: 1px solid #e9b4b4; border-radius: 8px; padding: 12px;">
     <div style="font-weight: 700; color: #9f1f1f; margin-bottom: 6px;">Downsides</div>
-    <div>Viewpoint diversity improved, but the floor/background still lacked enough visual variety.</div>
+    <div>VAccuracy from different viewpoints, but the consistent background made the model perform poorly in different-colored environemtns.</div>
   </div>
   <div style="flex: 1 1 280px; background: #eaf8ea; border: 1px solid #b8ddb8; border-radius: 8px; padding: 12px;">
     <div style="font-weight: 700; color: #1f7a1f; margin-bottom: 6px;">Next Fix</div>
-    <div>Randomize block materials/colors so the detector stops depending on a narrow background appearance.</div>
+    <div>Randomize background blocks so the detector stops depending on a single background appearance.</div>
   </div>
 </div>
 
@@ -257,11 +257,11 @@ In `v4`, we introduced background variation by replacing the floor with dozens o
 <div style="display: flex; flex-wrap: wrap; gap: 12px; margin: 1rem 0;">
   <div style="flex: 1 1 280px; background: #fdeaea; border: 1px solid #e9b4b4; border-radius: 8px; padding: 12px;">
     <div style="font-weight: 700; color: #9f1f1f; margin-bottom: 6px;">Downsides</div>
-    <div>Background shortcuts were reduced, but the model could still confuse wolves with similar-looking mobs.</div>
+    <div>Overtraining on a single background was reduced, but the model could still confuse wolves with similar colored entities.</div>
   </div>
   <div style="flex: 1 1 280px; background: #eaf8ea; border: 1px solid #b8ddb8; border-radius: 8px; padding: 12px;">
     <div style="font-weight: 700; color: #1f7a1f; margin-bottom: 6px;">Next Fix</div>
-    <div>Add sheep as distractors to force the detector to separate wolf features from generic light-colored shapes.</div>
+    <div>Add sheep as distractors to force the detector to separate wolf features from similar colored entities.</div>
   </div>
 </div>
 
@@ -283,11 +283,11 @@ mob.
 <div style="display: flex; flex-wrap: wrap; gap: 12px; margin: 1rem 0;">
   <div style="flex: 1 1 280px; background: #fdeaea; border: 1px solid #e9b4b4; border-radius: 8px; padding: 12px;">
     <div style="font-weight: 700; color: #9f1f1f; margin-bottom: 6px;">Downsides</div>
-    <div>Robustness improved, but the model still needed more total examples and longer training to stabilize.</div>
+    <div>The model still needed more total examples and longer training to stabilize.</div>
   </div>
   <div style="flex: 1 1 280px; background: #eaf8ea; border: 1px solid #b8ddb8; border-radius: 8px; padding: 12px;">
     <div style="font-weight: 700; color: #1f7a1f; margin-bottom: 6px;">Next Fix</div>
-    <div>Scale up the final dataset and train longer to improve consistency under the full set of variations.</div>
+    <div>Increase the dataset size to improve consistency under a broader range of variations.</div>
   </div>
 </div>
 
