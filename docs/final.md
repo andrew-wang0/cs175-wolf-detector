@@ -20,6 +20,34 @@ In practice, running our trained model in a live environment will be able to det
 
 <img src="./img/pipeline.png" width="100%">
 
+## Minecraft Environment
+
+Talk about how we planned to produce data within Minecraft using screenshots of wolves
+
+## Data Generation
+
+Talk about the mod we made and how it automatically generates and labels screenshots
+
+## AI Model
+
+Talk about how we researched different models and how welanded on YOLO
+
 # Evaluation
+
+Evaluation is importtant and we went thorugh serveral iterations to get the best performance
+
+## Preliminary Model
+
+First approach and why it was a naive approach
+
+## Iterating for Improvements
+
+Failures and how we solved
+(include graphs and images to back up)
+
+## Final Model
+
+How fixing everything made it better
+Testing in live Minecraft results
 
 # Resources Used
