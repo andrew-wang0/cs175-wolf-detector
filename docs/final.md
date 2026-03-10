@@ -30,11 +30,11 @@ Talk about the mod we made and how it automatically generates and labels screens
 
 ## AI Model
 
-Talk about how we researched different models and how welanded on YOLO
+Talk about how we researched different models and how we landed on YOLO
 
 # Evaluation
 
-Evaluation is importtant and we went thorugh serveral iterations to get the best performance
+Evaluation is important and we went thorugh several iterations to get the best performance
 
 ## Preliminary Model
 
