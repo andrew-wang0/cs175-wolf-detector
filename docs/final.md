@@ -92,10 +92,10 @@ varied environments.
 For the detection model, we considered both training a custom convolutional neural network (CNN) and using an existing
 object detection framework.
 
-| <div style="padding: 8px;">Approach</div> | <div style="padding: 8px;">Advantages</div> | <div style="padding: 8px;">Limitations</div> |
-|-------------------------------------------|---------------------------------------------|----------------------------------------------|
-| <div style="padding: 8px;">Custom CNN</div> | <div style="padding: 8px;">Full control over architecture, useful for experimentation</div> | <div style="padding: 8px;">Requires implementing detection logic and bounding box prediction from scratch</div> |
-| <div style="padding: 8px;"><a href="https://docs.ultralytics.com/">YOLO</a></div> | <div style="padding: 8px;">Fast inference, established object detection framework, simple training pipeline</div> | <div style="padding: 8px;">Less architectural control compared to building a model from scratch</div> |
+| <div style="padding: 8px;">Approach</div>                                         | <div style="padding: 8px;">Advantages</div>                                                                       | <div style="padding: 8px;">Limitations</div>                                                                    |
+|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
+| <div style="padding: 8px;">Custom CNN</div>                                       | <div style="padding: 8px;">Full control over architecture, useful for experimentation</div>                       | <div style="padding: 8px;">Requires implementing detection logic and bounding box prediction from scratch</div> |
+| <div style="padding: 8px;"><a href="https://docs.ultralytics.com/">YOLO</a></div> | <div style="padding: 8px;">Fast inference, established object detection framework, simple training pipeline</div> | <div style="padding: 8px;">Less architectural control compared to building a model from scratch</div>           |
 
 Given the goal of real-time inference, we chose to use the YOLOv26 model with a
 custom dataset because it was the most performant and had the most flexibility for our needs.
@@ -104,25 +104,36 @@ custom dataset because it was the most performant and had the most flexibility f
 
 We split the dataset into training and validation sets and trained directly on the auto-labeled screenshots. After
 training, our evaluation script loaded the best checkpoint and compared predicted boxes with the ground truth using an
-IoU threshold of 0.50. From this we computed true positives, false positives, and false negatives. We also exported
-prediction images alongside the ground-truth labels for visual inspection.
+IoU threshold of 0.50. From this we computed the number of true positives, false positives, and false negatives.
+
+In addition to these metrics, we also performed qualitative evaluation. We visually inspected predicted bounding boxes
+against the ground truth (see preliminary model) and tested the detector during live gameplay to observe how it behaved
+in real in-game situations and identify environments where the model struggled.
+
+Evaluating the model both quantitatively and qualitatively helped us better understand its strengths and failure cases
+while iterating on the dataset and training process.
 
 ## Preliminary Model
 
-Our first meaningful model, `v1`, was trained on only 20 randomly generated superflat grass images. It achieved `TP = 20510`, `FP = 3450`, and `FN = 2051`, corresponding to `85.60%` precision and `90.91%` recall.
+Our first meaningful model, `v1`, was trained on only 20 randomly generated superflat grass images. It achieved
+`TP = 20510`, `FP = 3450`, and `FN = 2051`, corresponding to `85.60%` precision and `90.91%` recall.
 
-During training, the model improved steadily. The loss curves dropped and the validation metrics increased. This suggested it was learning how to do well in a superflat environment.
+During training, the model improved steadily. The loss curves dropped and the validation metrics increased. This
+suggested it was learning how to do well in a superflat environment.
 
-However, when we tested the model in the Minecraft overworld, its performance dropped sharply. Wolves in natural terrain were often missed, and the model sometimes produced incorrect detections. This made it clear that the model had learned patterns specific to the training setup rather than general visual features of wolves. These errors are especially apparent on the snow environment as shown below.
+However, when we tested the model in the Minecraft overworld, its performance dropped sharply. Wolves in natural terrain
+were often missed, and the model sometimes produced incorrect detections. This made it clear that the model had learned
+patterns specific to the training setup rather than general visual features of wolves. These errors are especially
+apparent on the snow environment as shown below.
 
-From this version, we were able to guess most of the remaining challenges in the project: things such as camera framing, floor appearance, or the lack of similar mobs.
+From this version, we were able to guess most of the remaining challenges in the project: things such as camera framing,
+floor appearance, or the lack of similar mobs.
 
 
 <img src="./img/v1_graphs.png" width="100%">
 
 
 <img src="./img/v1_overworld.png" width="100%" alt="failing on real world example">
-
 
 # Resources Used
 
