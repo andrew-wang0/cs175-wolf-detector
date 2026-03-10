@@ -180,7 +180,7 @@ floor appearance, or the lack of similar mobs.
 
 ## Iterating for Improvements
 
-#### V2
+#### V2: Larger Dataset
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
   <div style="flex: 1 1 100%;">
@@ -206,7 +206,7 @@ After experimenting with live-gameplay, we realized that the model struggled to 
 
 <br/>
 
-#### V3
+#### V3: Varying Perspectives
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
   <div style="flex: 1 1 100%;">
@@ -232,7 +232,7 @@ While testing our model in different environemtns, we discovered that the model 
 
 <br/>
 
-#### V4
+#### V4: Varying Backgrounds
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
   <div style="flex: 1 1 100%;">We introduced background variation by replacing the floor with different colored block types.</div>
@@ -255,7 +255,7 @@ While testing our model in different environemtns, we discovered that the model 
 
 <br/>
 
-#### V5
+#### V5: Add Negatives
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
   <div style="flex: 1 1 100%;">We added sheep as distractors so the detector had to separate wolves from similar-looking mobs.</div>
@@ -278,18 +278,6 @@ While testing our model in different environemtns, we discovered that the model 
 
 <br/>
 
-#### V6
-
-<div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
-  <div style="flex: 1 1 100%;">With the variation pipeline in place, we scaled training with more data and more epochs.</div>
-  <hr style="flex: 1 1 100%; border: 0; border-top: 1px solid #bdbdbd; margin: 2px 0 6px 0;" />
-  <div><strong>Training Set Size:</strong> <code>{TBD}</code> images</div>
-  <div><strong>Precision:</strong> <code>{TBD}</code></div>
-  <div><strong>Recall:</strong> <code>{TBD}</code></div>
-</div>
-
-<br/>
-
 #### Iteration Takeaways
 
 These iterations made it clear that huge improvements came from the dataset. As we added variation, the model was forced
@@ -302,11 +290,28 @@ correct visual features was the most challenging part of the project.
 
 ## Final Model
 
+
+#### V6: Final Model
+
+
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
+  <div style="flex: 1 1 100%;">
 We tested `v6` after removing several simplifying assumptions from the earlier setup. The earlier models showed that the
 pipeline could detect wolves in a narrow setting, but `v6` tests whether the detector still works once camera angle,
 floor appearance, and distractor mobs are allowed to vary.
 
 `v6` represents the stage of the project where the evaluation setup more closely resembles real gameplay conditions.
+</div>
+  <hr style="flex: 1 1 100%; border: 0; border-top: 1px solid #bdbdbd; margin: 2px 0 6px 0;" />
+  <div><strong>Training Set Size:</strong> <code>{TBD}</code> images</div>
+  <div><strong>Precision:</strong> <code>{TBD}</code></div>
+  <div><strong>Recall:</strong> <code>{TBD}</code></div>
+</div>
+
+<br/>
+
+
 
 {final model graphs}
 
