@@ -195,23 +195,117 @@ The first change was simply increasing the dataset size. We expanded the trainin
 which gave the model many more examples of wolves from a birds-eye superflat view. We also trained the model for 120
 epochs to account for the larger dataset size.
 
+<br/>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
+  <div><strong>Training Set Size:</strong> <code>{180}</code> images</div>
+  <div><strong>Precision:</strong> <code>{TBD}</code></div>
+  <div><strong>Recall:</strong> <code>{TBD}</code></div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin: 1rem 0;">
+  <div style="flex: 1 1 280px; background: #fdeaea; border: 1px solid #e9b4b4; border-radius: 8px; padding: 12px;">
+    <div style="font-weight: 700; color: #9f1f1f; margin-bottom: 6px;">Downsides</div>
+    <div>More data helped, but the camera viewpoint was still too consistent for strong generalization.</div>
+  </div>
+  <div style="flex: 1 1 280px; background: #eaf8ea; border: 1px solid #b8ddb8; border-radius: 8px; padding: 12px;">
+    <div style="font-weight: 700; color: #1f7a1f; margin-bottom: 6px;">Next Fix</div>
+    <div>Add camera-angle variation so wolves are seen from multiple perspectives instead of mostly one top-down framing.</div>
+  </div>
+</div>
+
+<br/>
+
 #### V3
 
 In `v3`, we added camera-angle variation by teleporting the player around the scene so wolves would appear from
 different viewpoints.
 
+<br/>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
+  <div><strong>Training Set Size:</strong> <code>{TBD}</code> images</div>
+  <div><strong>Precision:</strong> <code>{TBD}</code></div>
+  <div><strong>Recall:</strong> <code>{TBD}</code></div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin: 1rem 0;">
+  <div style="flex: 1 1 280px; background: #fdeaea; border: 1px solid #e9b4b4; border-radius: 8px; padding: 12px;">
+    <div style="font-weight: 700; color: #9f1f1f; margin-bottom: 6px;">Downsides</div>
+    <div>Viewpoint diversity improved, but the floor/background still lacked enough visual variety.</div>
+  </div>
+  <div style="flex: 1 1 280px; background: #eaf8ea; border: 1px solid #b8ddb8; border-radius: 8px; padding: 12px;">
+    <div style="font-weight: 700; color: #1f7a1f; margin-bottom: 6px;">Next Fix</div>
+    <div>Randomize block materials/colors so the detector stops depending on a narrow background appearance.</div>
+  </div>
+</div>
+
+<br/>
+
 #### V4
 
 In `v4`, we introduced background variation by replacing the floor with dozens of different colored blocks.
+
+<br/>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
+  <div><strong>Training Set Size:</strong> <code>{TBD}</code> images</div>
+  <div><strong>Precision:</strong> <code>{TBD}</code></div>
+  <div><strong>Recall:</strong> <code>{TBD}</code></div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin: 1rem 0;">
+  <div style="flex: 1 1 280px; background: #fdeaea; border: 1px solid #e9b4b4; border-radius: 8px; padding: 12px;">
+    <div style="font-weight: 700; color: #9f1f1f; margin-bottom: 6px;">Downsides</div>
+    <div>Background shortcuts were reduced, but the model could still confuse wolves with similar-looking mobs.</div>
+  </div>
+  <div style="flex: 1 1 280px; background: #eaf8ea; border: 1px solid #b8ddb8; border-radius: 8px; padding: 12px;">
+    <div style="font-weight: 700; color: #1f7a1f; margin-bottom: 6px;">Next Fix</div>
+    <div>Add sheep as distractors to force the detector to separate wolf features from generic light-colored shapes.</div>
+  </div>
+</div>
+
+<br/>
 
 #### V5
 
 In `v5`, we added sheep to the scene as distractors so the model had to distinguish wolves from another similar-looking
 mob.
 
+<br/>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
+  <div><strong>Training Set Size:</strong> <code>{TBD}</code> images</div>
+  <div><strong>Precision:</strong> <code>{TBD}</code></div>
+  <div><strong>Recall:</strong> <code>{TBD}</code></div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin: 1rem 0;">
+  <div style="flex: 1 1 280px; background: #fdeaea; border: 1px solid #e9b4b4; border-radius: 8px; padding: 12px;">
+    <div style="font-weight: 700; color: #9f1f1f; margin-bottom: 6px;">Downsides</div>
+    <div>Robustness improved, but the model still needed more total examples and longer training to stabilize.</div>
+  </div>
+  <div style="flex: 1 1 280px; background: #eaf8ea; border: 1px solid #b8ddb8; border-radius: 8px; padding: 12px;">
+    <div style="font-weight: 700; color: #1f7a1f; margin-bottom: 6px;">Next Fix</div>
+    <div>Scale up the final dataset and train longer to improve consistency under the full set of variations.</div>
+  </div>
+</div>
+
+<br/>
+
 #### V6
 
 In `v6`, we were happy with our variations and simply trained it with more data for more epochs.
+
+<br/>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
+  <div><strong>Training Set Size:</strong> <code>{TBD}</code> images</div>
+  <div><strong>Precision:</strong> <code>{TBD}</code></div>
+  <div><strong>Recall:</strong> <code>{TBD}</code></div>
+</div>
+
+<br/>
 
 These iterations made it clear that huge improvements came from the dataset. As we added variation, the model was forced
 to rely less on easy cues like a uniform background or a white blob. Designing data that pushed the model toward the
