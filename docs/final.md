@@ -16,6 +16,7 @@ The output of the model is a set of axis-aligned bounding boxes (AABB), each cor
 In practice, running our trained model in a live environment will be able to detect wolves in gameplay frames, enabling live visual highlighting of wolves during gameplay.
 
 
+
 # Approach
 
 <img src="./img/pipeline.png" width="100%">
@@ -31,6 +32,8 @@ Talk about the mod we made and how it automatically generates and labels screens
 ## AI Model
 
 Talk about how we researched different models and how we landed on YOLO
+
+
 
 # Evaluation
 
@@ -49,5 +52,7 @@ Failures and how we solved
 
 How fixing everything made it better
 Testing in live Minecraft results
+
+
 
 # Resources Used
