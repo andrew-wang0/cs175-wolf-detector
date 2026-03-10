@@ -293,17 +293,13 @@ correct visual features was the most challenging part of the project.
 ## Final Model
 
 
-#### V6: Final Model
-
-
-
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
   <div style="flex: 1 1 100%;">
 We tested `v6` after removing several simplifying assumptions from the earlier setup. The earlier models showed that the
-pipeline could detect wolves in a narrow setting, but `v6` tests whether the detector still works once camera angle,
+pipeline could detect wolves in a narrow setting, but v6 tests whether the detector still works once camera angle,
 floor appearance, and distractor mobs are allowed to vary.
 
-`v6` represents the stage of the project where the evaluation setup more closely resembles real gameplay conditions.
+v6 represents the stage of the project where the evaluation setup more closely resembles real gameplay conditions.
 </div>
   <hr style="flex: 1 1 100%; border: 0; border-top: 1px solid #bdbdbd; margin: 2px 0 6px 0;" />
   <div><strong>Training Set Size:</strong> <code>{TBD}</code> images</div>
