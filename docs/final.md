@@ -164,8 +164,6 @@ floor appearance, or the lack of similar mobs.
 
 #### V1
 
-<br/>
-
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
   <div style="flex: 1 1 100%;">After seeing how poorly our preliminary model performed in the overworld, we knew there needed to be better training data. The early results showed overfitting, so we focused on making the dataset larger and more varied.</div>
   <div><strong>Training Set Size:</strong> <code>{20}</code> images</div>
@@ -187,8 +185,6 @@ floor appearance, or the lack of similar mobs.
 <br/>
 
 #### V2
-
-<br/>
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
   <div style="flex: 1 1 100%;">We increased the dataset from 20 to 180 superflat images and trained for 120 epochs to improve learning from a larger sample pool.</div>
@@ -212,7 +208,6 @@ floor appearance, or the lack of similar mobs.
 
 #### V3
 
-<br/>
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
   <div style="flex: 1 1 100%;">We added camera-angle variation by teleporting the player so wolves appeared from different viewpoints.</div>
@@ -236,8 +231,6 @@ floor appearance, or the lack of similar mobs.
 
 #### V4
 
-<br/>
-
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
   <div style="flex: 1 1 100%;">We introduced background variation by replacing the floor with many different colored block types.</div>
   <div><strong>Training Set Size:</strong> <code>{TBD}</code> images</div>
@@ -260,8 +253,6 @@ floor appearance, or the lack of similar mobs.
 
 #### V5
 
-<br/>
-
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
   <div style="flex: 1 1 100%;">We added sheep as distractors so the detector had to separate wolves from similar-looking mobs.</div>
   <div><strong>Training Set Size:</strong> <code>{TBD}</code> images</div>
@@ -283,8 +274,6 @@ floor appearance, or the lack of similar mobs.
 <br/>
 
 #### V6
-
-<br/>
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
   <div style="flex: 1 1 100%;">With the variation pipeline in place, we scaled training with more data and more epochs.</div>
