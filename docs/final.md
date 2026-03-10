@@ -136,6 +136,24 @@ floor appearance, or the lack of similar mobs.
 
 <img src="./img/v1_overworld.png" width="100%" alt="failing on real world example">
 
+
+## Iterating for Improvements
+
+After seeing how poorly `v1` performed in the overworld, we knew that there needed to be better training data. The early results already showed that the detector was overfitted to the training data, so most of our effort went into making the dataset larger and more varied.
+
+The first change was simply increasing the dataset size. We expanded the training set from 20 images to 180 images, which gave the model many more examples of wolves from a birds-eye superflat view. We also trained the model for 120 epochs to account for the larger dataset size. This marked `v2`.
+
+In `v3`, we added camera-angle variation by teleporting the player around the scene so wolves would appear from different viewpoints.
+
+In `v4`, we introduced background variation by replacing the floor with dozens of different colored blocks.
+
+In `v5`, we added sheep to the scene as distractors so the model had to distinguish wolves from another similar-looking mob.
+
+These iterations made it clear that huge improvements came from the dataset. As we added variation, the model was forced to rely less on easy cues like a uniform background or a white blob. Designing data that pushed the model toward the correct visual features was the most challenging part of the project.
+
+{INSERT TABLE HERE}
+
+
 # Resources Used
 
 - Ultralytics YOLO documentation for model training and inference: https://docs.ultralytics.com
