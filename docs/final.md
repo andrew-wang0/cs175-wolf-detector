@@ -146,13 +146,13 @@ floor appearance, or the lack of similar mobs.
 
 <figure style="text-align: center; margin: 1.25rem 0;">
   <img src="./img/v1_graphs.png" width="100%" alt="Training curves and validation metrics for the preliminary YOLO model" style="display: block; margin: 0 auto;">
-  <figcaption style="color: #777; margin-top: 0.5rem;">Training and validation curves for the preliminary YOLO model, including losses, precision, recall, and mAP.</figcaption>
+  <figcaption style="color: #222; margin-top: 0.5rem;">Training and validation curves for the preliminary YOLO model, including losses, precision, recall, and mAP.</figcaption>
 </figure>
 
 
 <figure style="text-align: center; margin: 1.25rem 0;">
   <img src="./img/v1_overworld.png" width="100%" alt="Side-by-side expected labels and model predictions in an overworld snow scene" style="display: block; margin: 0 auto;">
-  <figcaption style="color: #777; margin-top: 0.5rem;">Preliminary model failure in an overworld snow scene: expected wolf locations on the left, low-confidence and incorrect predictions on the right.</figcaption>
+  <figcaption style="color: #222; margin-top: 0.5rem;">Preliminary model failure in an overworld snow scene: expected wolf locations on the left, low-confidence and incorrect predictions on the right.</figcaption>
 </figure>
 
 
@@ -160,6 +160,40 @@ floor appearance, or the lack of similar mobs.
 
 ### V1
 After seeing how poorly our preliminary model (`v1`) performed in the overworld, we knew that there needed to be better training data. The early results already showed that the detector was overfitted to the training data, so most of our effort went into making the dataset larger and more varied.
+
+<div style="margin: 1rem 0;">
+  <table>
+    <thead>
+      <tr>
+        <th>Model / Stage</th>
+        <th>Training Set Size</th>
+        <th>Precision</th>
+        <th>Recall</th>
+        <th>Takeaway</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>v1</td>
+        <td><code>{20}</code> images</td>
+        <td><code>{85.60%}</code></td>
+        <td><code>{90.91%}</code></td>
+        <td>Promising start, but still too many false positives and missed detections</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="v1-callout-grid">
+  <div class="v1-callout v1-callout-downside">
+    <div class="v1-callout-title">Downsides</div>
+    <div>The model overfit to a narrow superflat setup and failed to generalize to overworld terrain.</div>
+  </div>
+  <div class="v1-callout v1-callout-fix">
+    <div class="v1-callout-title">Fix</div>
+    <div>Increase data size and scene diversity so the detector learns wolf-specific features instead of background shortcuts.</div>
+  </div>
+</div>
 
 ### V2
 The first change was simply increasing the dataset size. We expanded the training set from 20 images to 180 images, which gave the model many more examples of wolves from a birds-eye superflat view. We also trained the model for 120 epochs to account for the larger dataset size. This marked `v2`.
