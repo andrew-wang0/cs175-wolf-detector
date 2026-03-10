@@ -123,6 +123,22 @@ We split the dataset into training and validation sets and trained directly on t
 training, our evaluation script loaded the best checkpoint and compared predicted boxes with the ground truth using an
 IoU threshold of 0.50. From this we computed true positives, false positives, and false negatives. We also exported
 prediction images alongside the ground-truth labels for visual inspection.
+## Preliminary Model
+
+Our first meaningful model, `v1`, was trained on only 20 randomly generated superflat grass images. It achieved `TP = 20510`, `FP = 3450`, and `FN = 2051`, corresponding to `85.60%` precision and `90.91%` recall.
+
+During training, the model improved steadily. The loss curves dropped and the validation metrics increased. This suggested it was learning how to do well in a superflat environment.
+
+However, when we tested the model in the Minecraft overworld, its performance dropped sharply. Wolves in natural terrain were often missed, and the model sometimes produced incorrect detections. This made it clear that the model had learned patterns specific to the training setup rather than general visual features of wolves. These errors are especially apparent on the snow environment as shown below.
+
+From this version, we were able to guess most of the remaining challenges in the project: things such as camera framing, floor appearance, or the lack of similar mobs.
+
+
+<img src="./img/v1_graphs.png" width="100%">
+
+
+<img src="./img/v1_overworld.png" width="100%" alt="failing on real world example">
+
 
 # Resources Used
 
