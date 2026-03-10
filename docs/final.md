@@ -114,7 +114,8 @@ object detection framework.
   </tbody>
 </table>
 
-Given the goal of real-time inference, YOLO was the more practical choice.
+Given the goal of real-time inference, we chose to use the YOLOv26 model with a
+custom dataset because it was the most performant and had the most flexibility for our needs.
 
 # Evaluation
 
