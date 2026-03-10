@@ -106,6 +106,7 @@ We split the dataset into training and validation sets and trained directly on t
 training, our evaluation script loaded the best checkpoint and compared predicted boxes with the ground truth using an
 IoU threshold of 0.50. From this we computed true positives, false positives, and false negatives. We also exported
 prediction images alongside the ground-truth labels for visual inspection.
+
 ## Preliminary Model
 
 Our first meaningful model, `v1`, was trained on only 20 randomly generated superflat grass images. It achieved `TP = 20510`, `FP = 3450`, and `FN = 2051`, corresponding to `85.60%` precision and `90.91%` recall.
