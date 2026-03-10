@@ -55,6 +55,14 @@ The different datasets ended up having a large impact on the behavior of the fin
 
 We also considered generating training data in the Minecraft overworld so the model could learn from more natural terrain and occlusion. However, we didn't have a way to reliably vary the enviroment. In our superflat environment, we were able to control the color and angle of our samples consistently. Because of this, we chose to keep training data generation in the controlled platform for now.
 
-<div style="height: 260px; margin: 1.5rem 0; border: 2px dashed #bdbdbd; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #666; text-align: center; padding: 1rem;">
-  <strong>Leave space for a screenshot showing different camera angles, floor-color variations, or wolf/sheep labeling examples here.</strong>
-</div>
+<img src="./img/varied_samples.jpg" width="100%" alt="varied data examples">
+
+
+# Resources Used
+
+- Ultralytics YOLO documentation for model training and inference: https://docs.ultralytics.com
+- NeoForged for Minecraft mod development and in-game data generation: https://neoforged.net
+- OpenCV (`cv2`) for image processing and drawing evaluation outputs: https://opencv.org
+- Minecraft as the environment for data generation and testing: https://www.minecraft.net
+- Python standard library modules such as `argparse`, `pathlib`, `random`, `shutil`, and `datetime`
+- ChatGPT for code clarification and minor implementation support; the system design, project decisions, and main implementation work were completed by the team
