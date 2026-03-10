@@ -188,7 +188,10 @@ floor appearance, or the lack of similar mobs.
 #### V2
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
-  <div style="flex: 1 1 100%;">We increased the dataset from 20 to 180 superflat images and trained for 120 epochs to improve learning from a larger sample pool.</div>
+  <div style="flex: 1 1 100%;">
+We increased the dataset from 20 to 180 superflat images and trained for 120 epochs to improve learning from a larger sample pool, increasing the accuracy and reducing false-negatives.
+After experimenting with live-gameplay, we realized that the model struggled to detect wolves when viewed from different angles.
+</div>
   <hr style="flex: 1 1 100%; border: 0; border-top: 1px solid #bdbdbd; margin: 2px 0 6px 0;" />
   <div><strong>Training Set Size:</strong> <code>{180}</code> images</div>
   <div><strong>Precision:</strong> <code>{TBD}</code></div>
@@ -198,7 +201,7 @@ floor appearance, or the lack of similar mobs.
 <div style="display: flex; flex-wrap: wrap; gap: 12px; margin: 1rem 0;">
   <div style="flex: 1 1 280px; background: #fdeaea; border: 1px solid #e9b4b4; border-radius: 8px; padding: 12px;">
     <div style="font-weight: 700; color: #9f1f1f; margin-bottom: 6px;">Downsides</div>
-    <div>More data increased accuracy and reduced false-negatives, but the single camera viewpoint made it poor at generalization.</div>
+    <div>The single camera viewpoint made it poor at generalization.</div>
   </div>
   <div style="flex: 1 1 280px; background: #eaf8ea; border: 1px solid #b8ddb8; border-radius: 8px; padding: 12px;">
     <div style="font-weight: 700; color: #1f7a1f; margin-bottom: 6px;">Next Fix</div>
@@ -209,7 +212,6 @@ floor appearance, or the lack of similar mobs.
 <br/>
 
 #### V3
-
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
   <div style="flex: 1 1 100%;">We added camera-angle variation by teleporting the player so wolves appeared from different viewpoints.</div>
@@ -289,6 +291,8 @@ floor appearance, or the lack of similar mobs.
 </div>
 
 <br/>
+
+#### Iteration Takeaways
 
 These iterations made it clear that huge improvements came from the dataset. As we added variation, the model was forced
 to rely less on easy cues like a uniform background or a white blob. Designing data that pushed the model toward the
