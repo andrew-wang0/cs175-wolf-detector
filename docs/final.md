@@ -97,6 +97,7 @@ object detection framework.
 | Custom CNN                            | Full control over architecture, useful for experimentation                       | Requires implementing detection logic and bounding box prediction from scratch |
 | [YOLO](https://docs.ultralytics.com/) | Fast inference, established object detection framework, simple training pipeline | Less architectural control compared to building a model from scratch</div>     |
 
+\
 Given the goal of real-time inference, we chose to use the YOLOv26 model with a
 custom dataset because it was the most performant and had the most flexibility for our needs.
 
