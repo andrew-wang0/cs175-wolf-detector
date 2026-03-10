@@ -31,7 +31,10 @@ block types, and added sheep to the scene so the detector had to ignore lookalik
 
 # Approach
 
-<img src="./img/pipeline.png" width="100%" alt="Pipeline for Minecraft data generation, training, and evaluation">
+<figure style="text-align: center; margin: 1.25rem 0;">
+  <img src="./img/pipeline.png" width="100%" alt="Pipeline for Minecraft data generation, training, and evaluation" style="display: block; margin: 0 auto;">
+  <figcaption style="color: #777; margin-top: 0.5rem;">Pipeline for Minecraft data generation, training, and evaluation</figcaption>
+</figure>
 
 ## Minecraft Environment
 
@@ -84,7 +87,10 @@ terrain and occlusion. However, we didn't have a way to reliably vary the enviro
 were able to control the color and angle of our samples consistently. Because of this, we chose to keep training data
 generation in the controlled platform for now.
 
-<img src="./img/varied_samples.jpg" width="100%" alt="varied data examples">
+<figure style="text-align: center; margin: 1.25rem 0;">
+  <img src="./img/varied_samples.jpg" width="100%" alt="varied data examples" style="display: block; margin: 0 auto;">
+  <figcaption style="color: #777; margin-top: 0.5rem;">Varied training samples generated in Minecraft.</figcaption>
+</figure>
 
 ## AI Model
 
@@ -138,10 +144,16 @@ From this version, we were able to guess most of the remaining challenges in the
 floor appearance, or the lack of similar mobs.
 
 
-<img src="./img/v1_graphs.png" width="100%">
+<figure style="text-align: center; margin: 1.25rem 0;">
+  <img src="./img/v1_graphs.png" width="100%" alt="Training curves and validation metrics for the preliminary YOLO model" style="display: block; margin: 0 auto;">
+  <figcaption style="color: #777; margin-top: 0.5rem;">Training and validation curves for the preliminary YOLO model, including losses, precision, recall, and mAP.</figcaption>
+</figure>
 
 
-<img src="./img/v1_overworld.png" width="100%" alt="failing on real world example">
+<figure style="text-align: center; margin: 1.25rem 0;">
+  <img src="./img/v1_overworld.png" width="100%" alt="Side-by-side expected labels and model predictions in an overworld snow scene" style="display: block; margin: 0 auto;">
+  <figcaption style="color: #777; margin-top: 0.5rem;">Preliminary model failure in an overworld snow scene: expected wolf locations on the left, low-confidence and incorrect predictions on the right.</figcaption>
+</figure>
 
 
 ## Iterating for Improvements
