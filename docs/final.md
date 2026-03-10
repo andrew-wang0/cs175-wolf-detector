@@ -49,7 +49,7 @@ The sheep were intentionally included but not labeled, since this remained a one
 
 One small detail we kept in the dataset was the platform frequently appearing as two types of blocks instead of one. This happens because when we replace a large amount of blocks, the game doesn't re-render them all right away. We chose not to fix this bug since they added more variation of the environment to the dataset.
 
-To avoid labeling wolves that the player could not actually see, we added a visibility check using ray tracing from the camera to the bounding-box corners. If the wolf was fully occluded by terrain or another mob, we excluded it from the labels. This was less useful for our superflat scenario but would've been useful to learn occlusion in the future.
+To avoid labeling wolves that the player could not actually see, we added a visibility check using ray tracing from the camera to the bounding-box corners. If the wolf was fully occluded by terrain or another mob, we excluded it from the labels. This was less useful for our superflat scenario but would've been useful to correctly label occluded wolves in the future.
 
 The different datasets ended up having a large impact on the behavior of the final model. Each step of variation that was added forced the detector to rely less on simple shortcuts and more on the actual visual features of wolves. Each change exposed new weaknesses in earlier models and helped us guess what the detector was really learning from the data.
 
