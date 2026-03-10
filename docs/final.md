@@ -48,6 +48,7 @@ birds-eye view. This made it easier to build and test the data pipeline before e
 ## Data Generation
 
 ### Data Pipeline
+
 Our data generation pipeline was built as a custom NeoForged mod. At runtime, the mod:
 
 - Spawns wolves around a center point at randomized positions.
@@ -62,22 +63,26 @@ Our data generation pipeline was built as a custom NeoForged mod. At runtime, th
 ### Data Complexity
 
 #### Adding Hard Negatives
+
 The sheep were intentionally included but not labeled, since this remained a one-class wolf detector. That made them
 useful hard negatives. If the detector started drawing wolf boxes around sheep, it meant the model was still relying on
 visual cues such as whiteness instead of actually distinguishing wolf features.
 
 #### Adding Background Variation
+
 One small detail we kept in the dataset was the platform frequently appearing as two types of blocks instead of one.
 This happens because when we replace a large amount of blocks, the game doesn't re-render them all right away. We chose
 not to fix this bug since they added more variation of the environment to the dataset.
 
 #### Handling Occlusion
+
 To avoid labeling wolves that the player could not actually see, we added a visibility check using ray tracing from the
 camera to the bounding-box corners. If the wolf was fully occluded by terrain or another mob, we excluded it from the
 labels. This was less useful for our superflat scenario but would've been useful to correctly label occluded wolves in
 the future.
 
 ### Data Generation Considerations
+
 The different datasets ended up having a large impact on the behavior of the final model. Each step of variation that
 was added forced the detector to rely less on simple shortcuts and more on the actual visual features of wolves. Each
 change exposed new weaknesses in earlier models and helped us guess what the detector was really learning from the data.
@@ -155,11 +160,13 @@ floor appearance, or the lack of similar mobs.
   <figcaption style="color: #222; margin-top: 0.5rem;">Preliminary model failure in an overworld snow scene: expected wolf locations on the left, low-confidence and incorrect predictions on the right.</figcaption>
 </figure>
 
-
 ## Iterating for Improvements
 
 #### V1
-After seeing how poorly our preliminary model (`v1`) performed in the overworld, we knew that there needed to be better training data. The early results already showed that the detector was overfitted to the training data, so most of our effort went into making the dataset larger and more varied.
+
+After seeing how poorly our preliminary model (`v1`) performed in the overworld, we knew that there needed to be better
+training data. The early results already showed that the detector was overfitted to the training data, so most of our
+effort went into making the dataset larger and more varied.
 
 <br/>
 
@@ -175,7 +182,7 @@ After seeing how poorly our preliminary model (`v1`) performed in the overworld,
     <div>The model overfit to a narrow superflat setup and failed to generalize to overworld terrain.</div>
   </div>
   <div style="flex: 1 1 280px; background: #eaf8ea; border: 1px solid #b8ddb8; border-radius: 8px; padding: 12px;">
-    <div style="font-weight: 700; color: #1f7a1f; margin-bottom: 6px;">Fix</div>
+    <div style="font-weight: 700; color: #1f7a1f; margin-bottom: 6px;">Next Fix</div>
     <div>Increase data size and scene diversity so the detector learns wolf-specific features instead of background shortcuts.</div>
   </div>
 </div>
@@ -183,21 +190,32 @@ After seeing how poorly our preliminary model (`v1`) performed in the overworld,
 <br/>
 
 #### V2
-The first change was simply increasing the dataset size. We expanded the training set from 20 images to 180 images, which gave the model many more examples of wolves from a birds-eye superflat view. We also trained the model for 120 epochs to account for the larger dataset size. This marked `v2`.
+
+The first change was simply increasing the dataset size. We expanded the training set from 20 images to 180 images,
+which gave the model many more examples of wolves from a birds-eye superflat view. We also trained the model for 120
+epochs to account for the larger dataset size. This marked `v2`.
 
 #### V3
-In `v3`, we added camera-angle variation by teleporting the player around the scene so wolves would appear from different viewpoints.
+
+In `v3`, we added camera-angle variation by teleporting the player around the scene so wolves would appear from
+different viewpoints.
 
 #### V4
+
 In `v4`, we introduced background variation by replacing the floor with dozens of different colored blocks.
 
 #### V5
-In `v5`, we added sheep to the scene as distractors so the model had to distinguish wolves from another similar-looking mob.
+
+In `v5`, we added sheep to the scene as distractors so the model had to distinguish wolves from another similar-looking
+mob.
 
 #### V6
+
 In `v6`, we were happy with our variations and simply trained it with more data for more epochs.
 
-These iterations made it clear that huge improvements came from the dataset. As we added variation, the model was forced to rely less on easy cues like a uniform background or a white blob. Designing data that pushed the model toward the correct visual features was the most challenging part of the project.
+These iterations made it clear that huge improvements came from the dataset. As we added variation, the model was forced
+to rely less on easy cues like a uniform background or a white blob. Designing data that pushed the model toward the
+correct visual features was the most challenging part of the project.
 
 {INSERT TABLE HERE}
 
@@ -205,14 +223,15 @@ These iterations made it clear that huge improvements came from the dataset. As 
 
 ## Final Model
 
-We tested `v6` after removing several simplifying assumptions from the earlier setup. The earlier models showed that the pipeline could detect wolves in a narrow setting, but `v6` tests whether the detector still works once camera angle, floor appearance, and distractor mobs are allowed to vary.
+We tested `v6` after removing several simplifying assumptions from the earlier setup. The earlier models showed that the
+pipeline could detect wolves in a narrow setting, but `v6` tests whether the detector still works once camera angle,
+floor appearance, and distractor mobs are allowed to vary.
 
-`v6` represents the stage of the project where the evaluation setup more closely resembles real gameplay conditions. 
+`v6` represents the stage of the project where the evaluation setup more closely resembles real gameplay conditions.
 
 {final model graphs}
 
 {final model live overworld image}
-
 
 # Resources Used
 
