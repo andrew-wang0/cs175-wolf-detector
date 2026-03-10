@@ -29,5 +29,5 @@ The biggest struggle we ran into was that good results were very dependent on th
 
 We chose to generate our training data directly inside Minecraft so that the model would learn from the same visual environment it would later run in. This helped ensure the wolf detector would work in the game across different terrains and situations.
 
-For the initial experiments, we used a simple superflat world and repeatedly generated scenes with wolves from the player’s point of view. This made it easier to build and test the data pipeline before expanding to more varied environments.
+For the initial experiments, we used a simple superflat world and repeatedly generated scenes with wolves from a birds-eye view. This made it easier to build and test the data pipeline before expanding to more varied environments.
 
