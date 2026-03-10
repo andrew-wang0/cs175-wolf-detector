@@ -81,20 +81,30 @@ generation in the controlled platform for now.
 
 ## AI Model
 
-We chose to generate our training data directly inside Minecraft so that the model would learn from the same visual
-environment it would later run in. This helped ensure the wolf detector would work in the game across different terrains
-and situations.
+We generated our training data directly inside Minecraft so the model would learn from the same visual environment it
+would later run in. This helped ensure the wolf detector would work across different terrains and situations in the
+game.
 
 For the initial experiments, we used a simple superflat world and repeatedly generated scenes with wolves from a
-birds-eye view. This made it easier to build and test the data pipeline before expanding to more varied environments.
+bird’s-eye view. This controlled setup made it easier to build and debug the data pipeline before expanding to more
+varied environments.
+
+For the detection model, we considered both training a custom convolutional neural network (CNN) and using an existing
+object detection framework.
 
 | Approach                              | Advantages                                                                       | Limitations                                                                    |
 |---------------------------------------|----------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
-| Custom CNN                            | Full control over architecture, useful for learning and experimentation          | Requires implementing detection logic and bounding box prediction from scratch |
+| Custom CNN                            | Full control over architecture, useful for experimentation                       | Requires implementing detection logic and bounding box prediction from scratch |
 | [YOLO](https://docs.ultralytics.com/) | Fast inference, established object detection framework, simple training pipeline | Less architectural control compared to building a model from scratch           |
 
-Given the goal of real-time inference, YOLO was the more practical choice. After selecting the
-detector, we kept the model architecture fixed and focused on improving the dataset.
+Given the goal of real-time inference, YOLO was the more practical choice.
+
+# Evaluation
+
+We split the dataset into training and validation sets and trained directly on the auto-labeled screenshots. After
+training, our evaluation script loaded the best checkpoint and compared predicted boxes with the ground truth using an
+IoU threshold of 0.50. From this we computed true positives, false positives, and false negatives. We also exported
+prediction images alongside the ground-truth labels for visual inspection.
 
 # Resources Used
 
