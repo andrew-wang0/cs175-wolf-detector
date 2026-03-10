@@ -158,7 +158,7 @@ floor appearance, or the lack of similar mobs.
 
 ## Iterating for Improvements
 
-### V1
+#### V1
 After seeing how poorly our preliminary model (`v1`) performed in the overworld, we knew that there needed to be better training data. The early results already showed that the detector was overfitted to the training data, so most of our effort went into making the dataset larger and more varied.
 
 <div style="margin: 1rem 0;">
@@ -195,19 +195,19 @@ After seeing how poorly our preliminary model (`v1`) performed in the overworld,
   </div>
 </div>
 
-### V2
+#### V2
 The first change was simply increasing the dataset size. We expanded the training set from 20 images to 180 images, which gave the model many more examples of wolves from a birds-eye superflat view. We also trained the model for 120 epochs to account for the larger dataset size. This marked `v2`.
 
-### V3
+#### V3
 In `v3`, we added camera-angle variation by teleporting the player around the scene so wolves would appear from different viewpoints.
 
-### V4
+#### V4
 In `v4`, we introduced background variation by replacing the floor with dozens of different colored blocks.
 
-### V5
+#### V5
 In `v5`, we added sheep to the scene as distractors so the model had to distinguish wolves from another similar-looking mob.
 
-### V6
+#### V6
 In `v6`, we were happy with our variations and simply trained it with more data for more epochs.
 
 These iterations made it clear that huge improvements came from the dataset. As we added variation, the model was forced to rely less on easy cues like a uniform background or a white blob. Designing data that pushed the model toward the correct visual features was the most challenging part of the project.
