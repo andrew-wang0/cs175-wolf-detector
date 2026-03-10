@@ -112,6 +112,5 @@ prediction images alongside the ground-truth labels for visual inspection.
 - NeoForged for Minecraft mod development and in-game data generation: https://neoforged.net
 - OpenCV (`cv2`) for image processing and drawing evaluation outputs: https://opencv.org
 - Minecraft as the environment for data generation and testing: https://www.minecraft.net
-- Python standard library modules such as `argparse`, `pathlib`, `random`, `shutil`, and `datetime`
 - ChatGPT for code clarification and minor implementation support; the system design, project decisions, and main
   implementation work were completed by the team
