@@ -164,7 +164,7 @@ floor appearance, or the lack of similar mobs.
 
 #### V1
 
-After seeing how poorly our preliminary model (`v1`) performed in the overworld, we knew that there needed to be better
+After seeing how poorly our preliminary model performed in the overworld, we knew that there needed to be better
 training data. The early results already showed that the detector was overfitted to the training data, so most of our
 effort went into making the dataset larger and more varied.
 
@@ -183,7 +183,7 @@ effort went into making the dataset larger and more varied.
   </div>
   <div style="flex: 1 1 280px; background: #eaf8ea; border: 1px solid #b8ddb8; border-radius: 8px; padding: 12px;">
     <div style="font-weight: 700; color: #1f7a1f; margin-bottom: 6px;">Next Fix</div>
-    <div>Increase data size and scene diversity so the detector learns wolf-specific features instead of background shortcuts.</div>
+    <div>Increase data size and scene diversity so the detector learns wolf-specific features instead of overfitting on a single background.</div>
   </div>
 </div>
 
@@ -193,7 +193,7 @@ effort went into making the dataset larger and more varied.
 
 The first change was simply increasing the dataset size. We expanded the training set from 20 images to 180 images,
 which gave the model many more examples of wolves from a birds-eye superflat view. We also trained the model for 120
-epochs to account for the larger dataset size. This marked `v2`.
+epochs to account for the larger dataset size.
 
 #### V3
 
