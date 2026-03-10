@@ -37,3 +37,13 @@ body > .container {
 code {
   font-size: 80%;
 }
+
+table {
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+}
