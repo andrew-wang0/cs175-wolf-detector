@@ -168,9 +168,23 @@ In `v4`, we introduced background variation by replacing the floor with dozens o
 
 In `v5`, we added sheep to the scene as distractors so the model had to distinguish wolves from another similar-looking mob.
 
+In `v6`, we were happy with our variations and simply trained it with more data for more epochs.
+
 These iterations made it clear that huge improvements came from the dataset. As we added variation, the model was forced to rely less on easy cues like a uniform background or a white blob. Designing data that pushed the model toward the correct visual features was the most challenging part of the project.
 
 {INSERT TABLE HERE}
+
+<img src="./img/v5_label.jpg" width="100%">
+
+## Final Model
+
+We tested `v6` after removing several simplifying assumptions from the earlier setup. The earlier models showed that the pipeline could detect wolves in a narrow setting, but `v6` tests whether the detector still works once camera angle, floor appearance, and distractor mobs are allowed to vary.
+
+`v6` represents the stage of the project where the evaluation setup more closely resembles real gameplay conditions. 
+
+{final model graphs}
+
+{final model live overworld image}
 
 
 # Resources Used
