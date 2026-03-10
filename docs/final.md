@@ -161,36 +161,21 @@ floor appearance, or the lack of similar mobs.
 #### V1
 After seeing how poorly our preliminary model (`v1`) performed in the overworld, we knew that there needed to be better training data. The early results already showed that the detector was overfitted to the training data, so most of our effort went into making the dataset larger and more varied.
 
-<div style="margin: 1rem 0;">
-  <table>
-    <thead>
-      <tr>
-        <th>Model / Stage</th>
-        <th>Training Set Size</th>
-        <th>Precision</th>
-        <th>Recall</th>
-        <th>Takeaway</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>v1</td>
-        <td><code>{20}</code> images</td>
-        <td><code>{85.60%}</code></td>
-        <td><code>{90.91%}</code></td>
-        <td>Promising start, but still too many false positives and missed detections</td>
-      </tr>
-    </tbody>
-  </table>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
+  <div><strong>Model / Stage:</strong> v1</div>
+  <div><strong>Training Set Size:</strong> <code>{20}</code> images</div>
+  <div><strong>Precision:</strong> <code>{85.60%}</code></div>
+  <div><strong>Recall:</strong> <code>{90.91%}</code></div>
+  <div><strong>Takeaway:</strong> Promising start, but still too many false positives and missed detections</div>
 </div>
 
-<div class="v1-callout-grid">
-  <div class="v1-callout v1-callout-downside">
-    <div class="v1-callout-title">Downsides</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin: 1rem 0;">
+  <div style="flex: 1 1 280px; background: #fdeaea; border: 1px solid #e9b4b4; border-radius: 8px; padding: 12px;">
+    <div style="font-weight: 700; color: #9f1f1f; margin-bottom: 6px;">Downsides</div>
     <div>The model overfit to a narrow superflat setup and failed to generalize to overworld terrain.</div>
   </div>
-  <div class="v1-callout v1-callout-fix">
-    <div class="v1-callout-title">Fix</div>
+  <div style="flex: 1 1 280px; background: #eaf8ea; border: 1px solid #b8ddb8; border-radius: 8px; padding: 12px;">
+    <div style="font-weight: 700; color: #1f7a1f; margin-bottom: 6px;">Fix</div>
     <div>Increase data size and scene diversity so the detector learns wolf-specific features instead of background shortcuts.</div>
   </div>
 </div>
