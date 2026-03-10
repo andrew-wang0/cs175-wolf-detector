@@ -148,25 +148,7 @@ apparent on the snow environment as shown below.
 From this version, we were able to guess most of the remaining challenges in the project: things such as camera framing,
 floor appearance, or the lack of similar mobs.
 
-
-<figure style="text-align: center; margin: 1.25rem 0;">
-  <img src="./img/v1_graphs.png" width="100%" alt="Training curves and validation metrics for the preliminary YOLO model" style="display: block; margin: 0 auto;">
-  <figcaption style="color: #222; margin-top: 0.5rem;">Training and validation curves for the preliminary YOLO model, including losses, precision, recall, and mAP.</figcaption>
-</figure>
-
-
-<figure style="text-align: center; margin: 1.25rem 0;">
-  <img src="./img/v1_overworld.png" width="100%" alt="Side-by-side expected labels and model predictions in an overworld snow scene" style="display: block; margin: 0 auto;">
-  <figcaption style="color: #222; margin-top: 0.5rem;">Preliminary model failure in an overworld snow scene: expected wolf locations on the left, low-confidence and incorrect predictions on the right.</figcaption>
-</figure>
-
-## Iterating for Improvements
-
-#### V1
-
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
-  <div style="flex: 1 1 100%;">After seeing how poorly our preliminary model performed in the overworld, we knew there needed to be better training data. The early results showed overfitting, so we focused on making the dataset larger and more varied.</div>
-  <hr style="flex: 1 1 100%; border: 0; border-top: 1px solid #bdbdbd; margin: 2px 0 6px 0;" />
   <div><strong>Training Set Size:</strong> <code>{20}</code> images</div>
   <div><strong>Precision:</strong> <code>{85.60%}</code></div>
   <div><strong>Recall:</strong> <code>{90.91%}</code></div>
@@ -184,6 +166,19 @@ floor appearance, or the lack of similar mobs.
 </div>
 
 <br/>
+
+<figure style="text-align: center; margin: 1.25rem 0;">
+  <img src="./img/v1_graphs.png" width="100%" alt="Training curves and validation metrics for the preliminary YOLO model" style="display: block; margin: 0 auto;">
+  <figcaption style="color: #222; margin-top: 0.5rem;">Training and validation curves for the preliminary YOLO model, including losses, precision, recall, and mAP.</figcaption>
+</figure>
+
+
+<figure style="text-align: center; margin: 1.25rem 0;">
+  <img src="./img/v1_overworld.png" width="100%" alt="Side-by-side expected labels and model predictions in an overworld snow scene" style="display: block; margin: 0 auto;">
+  <figcaption style="color: #222; margin-top: 0.5rem;">Preliminary model failure in an overworld snow scene: expected wolf locations on the left, low-confidence and incorrect predictions on the right.</figcaption>
+</figure>
+
+## Iterating for Improvements
 
 #### V2
 
@@ -214,7 +209,10 @@ After experimenting with live-gameplay, we realized that the model struggled to 
 #### V3
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
-  <div style="flex: 1 1 100%;">We added camera-angle variation by teleporting the player so wolves appeared from different viewpoints.</div>
+  <div style="flex: 1 1 100%;">
+We added camera-angle variation by teleporting the player so wolves appeared from different viewpoints in our dataset.
+While testing our model in different environemtns, we discovered that the model struggled in different biomes, especially when wolves appeared against white backgrounds, such as in the snow.
+</div>
   <hr style="flex: 1 1 100%; border: 0; border-top: 1px solid #bdbdbd; margin: 2px 0 6px 0;" />
   <div><strong>Training Set Size:</strong> <code>{TBD}</code> images</div>
   <div><strong>Precision:</strong> <code>{TBD}</code></div>
@@ -224,7 +222,7 @@ After experimenting with live-gameplay, we realized that the model struggled to 
 <div style="display: flex; flex-wrap: wrap; gap: 12px; margin: 1rem 0;">
   <div style="flex: 1 1 280px; background: #fdeaea; border: 1px solid #e9b4b4; border-radius: 8px; padding: 12px;">
     <div style="font-weight: 700; color: #9f1f1f; margin-bottom: 6px;">Downsides</div>
-    <div>VAccuracy from different viewpoints, but the consistent background made the model perform poorly in different-colored environemtns.</div>
+    <div>The consistent background made the model perform poorly in different-colored environemtns.</div>
   </div>
   <div style="flex: 1 1 280px; background: #eaf8ea; border: 1px solid #b8ddb8; border-radius: 8px; padding: 12px;">
     <div style="font-weight: 700; color: #1f7a1f; margin-bottom: 6px;">Next Fix</div>
@@ -237,7 +235,7 @@ After experimenting with live-gameplay, we realized that the model struggled to 
 #### V4
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; margin: 1rem 0; padding: 10px; border: 1px solid #555; border-radius: 8px; background: #f3f3f3;">
-  <div style="flex: 1 1 100%;">We introduced background variation by replacing the floor with many different colored block types.</div>
+  <div style="flex: 1 1 100%;">We introduced background variation by replacing the floor with different colored block types.</div>
   <hr style="flex: 1 1 100%; border: 0; border-top: 1px solid #bdbdbd; margin: 2px 0 6px 0;" />
   <div><strong>Training Set Size:</strong> <code>{TBD}</code> images</div>
   <div><strong>Precision:</strong> <code>{TBD}</code></div>
@@ -247,7 +245,7 @@ After experimenting with live-gameplay, we realized that the model struggled to 
 <div style="display: flex; flex-wrap: wrap; gap: 12px; margin: 1rem 0;">
   <div style="flex: 1 1 280px; background: #fdeaea; border: 1px solid #e9b4b4; border-radius: 8px; padding: 12px;">
     <div style="font-weight: 700; color: #9f1f1f; margin-bottom: 6px;">Downsides</div>
-    <div>Overtraining on a single background was reduced, but the model could still confuse wolves with similar colored entities.</div>
+    <div>The model could still confuse wolves with similar colored entities.</div>
   </div>
   <div style="flex: 1 1 280px; background: #eaf8ea; border: 1px solid #b8ddb8; border-radius: 8px; padding: 12px;">
     <div style="font-weight: 700; color: #1f7a1f; margin-bottom: 6px;">Next Fix</div>
