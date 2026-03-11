@@ -102,6 +102,11 @@ generation in the controlled platform for now.
   <figcaption style="color: #777; margin-top: 0.5rem;">Varied training samples generated in Minecraft.</figcaption>
 </figure>
 
+<figure style="text-align: center; margin: 1.25rem 0;">
+  <img src="./img/datagen.gif" width="100%" alt="varied data examples" style="display: block; margin: 0 auto;">
+  <figcaption style="color: #777; margin-top: 0.5rem;">Automated data generation harness</figcaption>
+</figure>
+
 ## AI Model
 
 We generated our training data directly inside Minecraft so the model would learn from the same visual environment it
@@ -155,13 +160,13 @@ floor appearance, or the lack of similar mobs.
 
 <figure style="text-align: center; margin: 1.25rem 0;">
   <img src="./img/v1_graphs.png" width="100%" alt="Training curves and validation metrics for the preliminary YOLO model" style="display: block; margin: 0 auto;">
-  <figcaption style="color: #222; margin-top: 0.5rem;">Training and validation curves for the preliminary YOLO model, including losses, precision, recall, and mAP.</figcaption>
+  <figcaption style="color: #777; margin-top: 0.5rem;">Training and validation curves for the preliminary YOLO model, including losses, precision, recall, and mAP.</figcaption>
 </figure>
 
 
 <figure style="text-align: center; margin: 1.25rem 0;">
   <img src="./img/v1_overworld.png" width="100%" alt="Side-by-side expected labels and model predictions in an overworld snow scene" style="display: block; margin: 0 auto;">
-  <figcaption style="color: #222; margin-top: 0.5rem;">Preliminary model failure in an overworld snow scene: expected wolf locations on the left, low-confidence and incorrect predictions on the right.</figcaption>
+  <figcaption style="color: #777; margin-top: 0.5rem;">Preliminary model failure in an overworld snow scene: expected wolf locations on the left, low-confidence and incorrect predictions on the right.</figcaption>
 </figure>
 
 <br/>
@@ -273,9 +278,9 @@ We added sheep as distractors so the detector had to separate wolves from simila
 The model had good performance, but still needed more total examples to stabilize.
 </div>
   <hr style="flex: 1 1 100%; border: 0; border-top: 1px solid #bdbdbd; margin: 2px 0 6px 0;" />
-  <div><strong>Training Set Size:</strong> <code>{TBD}</code> images</div>
-  <div><strong>Precision:</strong> <code>{TBD}</code></div>
-  <div><strong>Recall:</strong> <code>{TBD}</code></div>
+  <div><strong>Training Set Size:</strong> <code>{5000}</code> images</div>
+  <div><strong>Precision:</strong> <code>{0.9476}</code></div>
+  <div><strong>Recall:</strong> <code>{TBH}</code></div>
 </div>
 
 <div style="display: flex; flex-wrap: wrap; gap: 12px; margin: 1rem 0;">
@@ -297,9 +302,6 @@ These iterations made it clear that huge improvements came from the dataset. As 
 to rely less on easy cues like a uniform background or a white blob. Designing data that pushed the model toward the
 correct visual features was the most challenging part of the project.
 
-{INSERT TABLE HERE}
-
-<img src="./img/v5_label.jpg" width="100%">
 
 ## Final Model
 
@@ -312,18 +314,27 @@ floor appearance, and distractor mobs are allowed to vary.
 v6 represents the stage of the project where the evaluation setup more closely resembles real gameplay conditions.
 </div>
   <hr style="flex: 1 1 100%; border: 0; border-top: 1px solid #bdbdbd; margin: 2px 0 6px 0;" />
-  <div><strong>Training Set Size:</strong> <code>{TBD}</code> images</div>
-  <div><strong>Precision:</strong> <code>{TBD}</code></div>
-  <div><strong>Recall:</strong> <code>{TBD}</code></div>
+  <div><strong>Training Set Size:</strong> <code>{5000}</code> images</div>
+  <div><strong>Precision:</strong> <code>{0.9476}</code></div>
+  <div><strong>Recall:</strong> <code>{0.9728}</code></div>
 </div>
 
 <br/>
 
+<figure style="text-align: center; margin: 1.25rem 0;">
+  <img src="./img/v5_label.jpg" alt="Ground-truth labels compared with final-model detections" width="100%" style="display: block; margin: 0 auto;">
+  <figcaption style="color: #777; margin-top: 0.5rem;">Ground-truth labels compared with final-model detections on a representative validation example.</figcaption>
+</figure>
 
+<figure style="text-align: center; margin: 1.25rem 0;">
+  <img src="./img/final_results.png" alt="Training curves and evaluation metrics for the final model" width="100%" style="display: block; margin: 0 auto;">
+  <figcaption style="color: #777; margin-top: 0.5rem;">Training and evaluation curves for the final model, including loss reduction and detection metrics over time.</figcaption>
+</figure>
 
-{final model graphs}
-
-{final model live overworld image}
+<figure style="text-align: center; margin: 1.25rem 0;">
+  <img src="./img/live_inference.gif" alt="Live gameplay inference from the final wolf detector" width="100%" style="display: block; margin: 0 auto;">
+  <figcaption style="color: #777; margin-top: 0.5rem;">Live gameplay inference showing the final detector tracking wolves under more realistic in-game conditions.</figcaption>
+</figure>
 
 # Resources Used
 
