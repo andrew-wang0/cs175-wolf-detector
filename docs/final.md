@@ -29,6 +29,11 @@ mostly fixed camera, a predictable floor, and no meaningful distractor mobs. In 
 the task harder in three targeted ways. We changed camera angles, changed the floor across ~100 multicolored Minecraft
 block types, and added sheep to the scene so the detector had to ignore lookalike mobs.
 
+# Motivation 
+```
+TODO
+```
+
 # Approach
 
 <figure style="text-align: center; margin: 1.25rem 0;">
